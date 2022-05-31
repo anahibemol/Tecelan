@@ -2,22 +2,55 @@
 using static System.Int32;
 
 Console.WriteLine(@"WHICH FUNCTION OF THE ANALYZER DO YOU WANT TO USE
-1-Verify if two texts are the same
-2-Sort several texts in alphabetical order");
+1-Get statistics of a given text (e.g. Length)
+2-Verify if two texts are the same
+3-Sort several texts in alphabetical order");
 
 string OpeningMenu = Console.ReadLine() ?? "1";
 
 switch (OpeningMenu)
 {
 case "1":
-Identity();
+Statistics();
 break;
 case "2":
+Identity();
+break;
+case "3":
 Sorter();
 break;
 }
 
-static void Identity()
+
+
+//Below are the main functions of the program.
+
+static void Statistics()
+{
+    Console.WriteLine("Write the text to be analyzed");
+
+    string? Text = Convert.ToString(Console.ReadLine());
+    if (Text is not null)
+   {
+    Console.WriteLine($"For the text:");
+    Console.WriteLine(Text);
+    int tLength = Text.Length;
+    int tLengthSpaceless = Text.Count(c => !Char.IsWhiteSpace(c));
+
+
+    Console.WriteLine($"The text has {tLength} characters ({tLengthSpaceless} if you dont count the spaces)");
+
+    var results = Text.Split(' ').Where(x => x.Length > 3)
+                              .GroupBy(x => x)
+                              .Select(x => new { Count = x.Count(), Word = x.Key })
+                              .OrderByDescending(x => x.Count);
+
+foreach (var item in results)
+    Console.WriteLine(String.Format("the word {0} occured {1} times", item.Word, item.Count));
+   }
+}
+
+static void Identity() 
 {
     Console.WriteLine("This program checks if two texts of any length are the same, please write your first");
 
@@ -76,6 +109,8 @@ static void Sorter()
     Console.ReadKey();    
 }
 
+
+//Below are some utility functions used in various programs to shorten code.
 static void ClearLine(int pedro)
 {
     Console.SetCursorPosition(0, Console.CursorTop - pedro);
