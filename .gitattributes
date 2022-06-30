@@ -1,1 +1,2 @@
- *.smalltalk linguist-detectable=false
+ *.rb linguist-language=Csharp
+ *.
