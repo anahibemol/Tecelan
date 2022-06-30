@@ -1,1 +1,1 @@
- *.* linguist-language=CSharp
+ *.smalltalk linguist-detectable=false
