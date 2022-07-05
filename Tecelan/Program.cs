@@ -2,6 +2,7 @@
 using System;
 using System.Text;
 using System.Globalization;
+
 using static System.Int32;
 
 
@@ -89,11 +90,27 @@ namespace Tecelan
                 Console.ReadKey();    
             }
 
-            public static void Encoder()
+            public static void Encoding()
             {
+
+                Console.WriteLine();
+                Console.WriteLine(@"
+                Write what you want to do:
+
+                |1 or ENCODE    - Encodes regular text to other encodings.
+                |2 or DECODE    - Decodes encoded text. (Still in Development)
+                |_________________________________________________________");
+
+                string EncodeSwitch = Console.ReadLine() ?? "1";
+                
+                EncodeSwitch = EncodeSwitch.ToUpper();
 
                 Console.WriteLine("Write your Text");
                 string Text = Console.ReadLine() ?? "ERROR";
+
+                void S_Encoder()
+                {
+
                 Console.WriteLine(@"
                 Your text is in UTF-16 by Default
                 
@@ -113,18 +130,18 @@ namespace Tecelan
                 if (Text != "ERROR" && (Format.ToUpper() == "ASCII" ^ Format == "1"))
                 {
 
-                    Extra.UnicodeToANSII(Text, false);
-                    Extra.UnicodeToANSII(NormalizedText, true);
+                    Extra.ANSIIEncoder(Text, false);
+                    Extra.ANSIIEncoder(NormalizedText, true);
 
                 }
 
 
-                if (Text != "ERROR" && (Format == "UTF-8" ^ Format == "2"))
+                if (Text != "ERROR" && (Format.ToUpper() == "UTF-8" ^ Format == "2"))
                 {
-                    Extra.Unicode16To8("a", true);
+                    Extra.UTF8Encoder(Text, true);
                 }         
 
-                if (Text != "ERROR" && (Format == "UTF-16" ^ Format == "3"))
+                if (Text != "ERROR" && (Format.ToUpper() == "UTF-16" ^ Format == "3"))
                 {
                     Console.WriteLine("Your text is already in UTF-16");
 
@@ -142,10 +159,52 @@ namespace Tecelan
                     Console.WriteLine("Normalized Tex:");
 
                     Console.WriteLine(NormalizedText);
-                } 
+                }
                 else {Console.WriteLine("Write a Valid Text/Format"); }
-            }
+                }
 
+                void S_Decoder()
+                {
+
+                Console.WriteLine(@"
+                Your text is in UTF-16 by Default
+                
+                Write the format you want your text to be encoded into:
+
+                |1 or ASCII    - Encodes your Text to ASCII.
+                |2 or UTF-8    - Encodes your Text to UTF-8.
+                |3 or UTF-16   - Encodes your Text to UTF-16.
+                |4 or NORMAL   - Removes Accents/Diacritics from the text.
+                |_______________________________________________________");
+
+                string Format = Console.ReadLine() ?? "UTF-16";
+                Format.ToUpper();
+                
+                string NormalizedText = Extra.Normalizer(Text);
+                if (Text != "ERROR" && (Format.ToUpper() == "ASCII" ^ Format == "2"))
+                {
+                    Extra.UTF8Decoder(Text, true);
+                }
+                }
+
+            switch(EncodeSwitch)
+            {
+                case "1":
+                S_Encoder();
+                break;
+                case "2":
+                S_Decoder();
+                break;
+                case "ENCODE":
+                S_Encoder();
+                break;
+                case "DECODE":
+                S_Decoder();
+                break;             
+            }
+            
+            }
+    
         }  
 
         public static void Main(string[] args)
@@ -160,11 +219,11 @@ namespace Tecelan
                 |1 or STATS    - Get statistics of a given text (e.g. Length).
                 |2 or IDENTITY - Verify if two texts are the same.
                 |3 or SORT     - Sort several texts in alphabetical order.
-                |4 or ENCODE   - Encode your text to other encodings.
+                |4 or ENCODE   - Encodes and/or Decodes Text.
                 |5 or EXIT     - Exits the Program.
                 |_______________________________________________________");
                 string OpeningMenu = Console.ReadLine() ?? "1";
-                OpeningMenu.ToUpper();
+                OpeningMenu = OpeningMenu.ToUpper();
                 //If you want to change the name of a command, you need to change both in the If and the Switch
                 if (OpeningMenu == "1") { OpeningMenu = "STATS";    } 
                 if (OpeningMenu == "2") { OpeningMenu = "IDENTITY"; }
@@ -183,7 +242,7 @@ namespace Tecelan
                     SoisTask.Sorter();
                 break;
                 case "ENCODE":
-                    SoisTask.Encoder();
+                    SoisTask.Encoding();
                 break;
                 case "EXIT":
                     whiler = false;
@@ -203,8 +262,8 @@ namespace Tecelan
                 Console.SetCursorPosition(0, Console.CursorTop);
 
             }   
-        
-            public static void UnicodeToANSII(string Text, bool Normalized)
+
+            public static void ANSIIEncoder(string Text, bool Normalized)
             {
 
                     string unicodeString = $"This string contains the unicode character {Text}";
@@ -243,7 +302,7 @@ namespace Tecelan
 
             }
 
-            public static void Unicode16To8(string Text, bool Normalized)
+            public static void UTF8Encoder(string Text, bool Normalized)
             {
                 // Create a UTF-8 encoding.
                 UTF8Encoding utf8 = new UTF8Encoding();
@@ -258,10 +317,17 @@ namespace Tecelan
                 Console.WriteLine();
                 Console.WriteLine("Encoded bytes:");
                 for (int ctr = 0; ctr < encodedBytes.Length; ctr++) {
-                    Console.Write("{0:X2} ", encodedBytes[ctr]);
+                    Console.Write(@"\x{0:X2} ", encodedBytes[ctr]);
                     if ((ctr + 1) %  25 == 0)
                     Console.WriteLine();
                 }
+                Console.WriteLine();
+                Console.WriteLine("Encoded bytes (no spaces):");
+                for (int ctr = 0; ctr < encodedBytes.Length; ctr++) {
+                    Console.Write(@"\x{0:X2}", encodedBytes[ctr]);
+                    if ((ctr + 1) %  25 == 0)
+                    Console.WriteLine();
+                }                
                 Console.WriteLine();
                 
                 // Decode bytes back to string.
@@ -270,7 +336,52 @@ namespace Tecelan
                 Console.WriteLine("Decoded bytes:");
                 Console.WriteLine(decodedString);
             }
+
+            public static void UTF8Decoder(string Text, bool Normalized)
+            {
+                Encoding utf8 = new UTF8Encoding();
+                byte[] bytes = Text.Split(' ').Select(s => Convert.ToByte(s, 16)).ToArray();
+
+                { Console.WriteLine("Mama Mia:"); Console.WriteLine(bytes[0]); }
+                String decodedString = utf8.GetString(bytes);
+                Console.WriteLine();
+                Console.WriteLine("Decoded Text:");
+                Console.WriteLine(decodedString);}
             
+            public static void UTF8DecoderE(string Text, bool Normalized)
+            {
+             
+
+                Encoding utf8 = new UTF8Encoding();
+             
+                Console.WriteLine($"Encoded Text = {Text}");
+
+                Text = Text.Replace(@"\"," ");
+                Text = Text.Replace(@"x","°");
+
+
+                List<char> charsToRemove = new List<char>() {'°'};
+                
+
+                  string Filter(string str, List<char> charsToRemove)
+                {
+                    return String.Concat(Text.Split(charsToRemove.ToArray()));
+                }
+
+                 Text = Filter(Text, charsToRemove);
+
+                Console.WriteLine(Text);
+
+                try{byte[] bytes = Text.Split(' ').Select(s => Convert.ToByte(s, 16)).ToArray();
+
+                { Console.WriteLine("Mama Mia:"); Console.WriteLine(bytes[1]); }
+                String decodedString = utf8.GetString(bytes);
+                Console.WriteLine();
+                Console.WriteLine("Decoded Text:");
+                Console.WriteLine(decodedString);}
+                catch{Console.WriteLine("Faio"); }    
+                           
+            }
 
             public static string Normalizer(string Text)
             {
@@ -293,10 +404,10 @@ namespace Tecelan
                     .Normalize(NormalizationForm.FormC);
 
                         }
+        
         }
      
-         
-    }
+ }
 
 }
 
