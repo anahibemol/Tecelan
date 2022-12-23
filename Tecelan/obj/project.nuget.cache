@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "KQ+Mx8kd50R37cUZI3Nxql3xQu1xNHLBgeMSUzeFr8ZImz8/TBK+JIBFghZUL5z0+Ea4egGZAVvtr0kzJlUUzQ==",
+  "dgSpecHash": "U+x0Ky8T/Wb4XPyUjRKK47ylRJPuYf6/tfjDNCgK+57oXtJpgL9CBqNR5nIYWy1KrOBxae/xbQmI3PNoazRzbw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USUARIO\\Documents\\Programação\\Tecelan\\Tecelan 1.3.0-alpha\\Tecelan\\String Analyzer.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\nulos\\OneDrive\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nulos\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\nulos\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\nulos\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\nulos\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.11\\microsoft.netcore.app.host.win-x64.6.0.11.nupkg.sha512"
+  ],
   "logs": []
 }

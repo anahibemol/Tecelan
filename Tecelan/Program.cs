@@ -15,8 +15,14 @@ namespace Tecelan
         {
             public static void Statistics()
             {
-                Console.WriteLine("Write the text to be analyzed");    
-                string Text = Console.ReadLine() ?? "ERROR";
+                Console.WriteLine("Write the text on the file 'Input.txt' on the Tecelan Folder");    
+                string Text = string.Empty;
+                string[] lines = System.IO.File.ReadAllLines(@"./Input.txt");
+
+                foreach (var item in lines)
+                    {
+                        Text += item;
+                    }
 
                 if (Text == "ERROR") {Console.WriteLine("Please Write a Valid Text");}
                 else
