@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nulos\\OneDrive\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj": {}
+    "C:\\Users\\nulos\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nulos\\OneDrive\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj": {
+    "C:\\Users\\nulos\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nulos\\OneDrive\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj",
+        "projectUniqueName": "C:\\Users\\nulos\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj",
         "projectName": "String Analyzer",
-        "projectPath": "C:\\Users\\nulos\\OneDrive\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj",
+        "projectPath": "C:\\Users\\nulos\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj",
         "packagesPath": "C:\\Users\\nulos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nulos\\OneDrive\\Documentos\\GitHub\\Tecelan\\Tecelan\\obj\\",
+        "outputPath": "C:\\Users\\nulos\\Documentos\\GitHub\\Tecelan\\Tecelan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nulos\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U+x0Ky8T/Wb4XPyUjRKK47ylRJPuYf6/tfjDNCgK+57oXtJpgL9CBqNR5nIYWy1KrOBxae/xbQmI3PNoazRzbw==",
+  "dgSpecHash": "87g66/uoktGg33oN6AgJwfom1jJbNsYDLia75aiZ9CiWw/S1hlYGyUrtfLn9MipwggXiqN1LtWh/t2UZp2esDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nulos\\OneDrive\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj",
+  "projectFilePath": "C:\\Users\\nulos\\Documentos\\GitHub\\Tecelan\\Tecelan\\String Analyzer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nulos\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512",
     "C:\\Users\\nulos\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
