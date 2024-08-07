@@ -29,7 +29,8 @@ namespace Tecelan
                 |2 or IDENTITY - Verify if two texts are the same.
                 |3 or SORT     - Sort several texts in alphabetical order.
                 |4 or ENCODE   - Encodes and/or Decodes Text.
-                |5 or EXIT     - Exits the Program.
+                |5 or CIPHER   - Encrypts and/or Decrypts Text.
+                |6 or EXIT     - Exits the Program.
                 |_______________________________________________________");
                 string OpeningMenu = Console.ReadLine() ?? "0";
                 OpeningMenu = OpeningMenu.ToUpper();
@@ -47,7 +48,10 @@ namespace Tecelan
                 case "ENCODE" or "4":
                     Encoder.Open();
                 break;
-                case "EXIT" or "5":
+                case "CIPHER" or "5":
+                    Cipher.Open();
+                break;
+                case "EXIT" or "6":
                     whiler = false;
                 break;
                 }

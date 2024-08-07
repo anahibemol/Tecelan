@@ -8,10 +8,7 @@ namespace Tecelan
                 string Text = string.Empty;
                 string[] lines = System.IO.File.ReadAllLines(@"./Input.txt");
 
-                foreach (var item in lines)
-                    {
-                        Text += item;
-                    }
+                foreach (var item in lines) { Text += item; }
 
                 if (Text == "ERROR") {Console.WriteLine("Please Write a Valid Text");}
                 else
