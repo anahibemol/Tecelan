@@ -106,18 +106,12 @@ namespace Tecelan
 
             switch(EncodeSwitch)
             {
-                case "1":
+                case "1" or "ENCODE":
                 S_Encoder();
                 break;
-                case "2":
+                case "2" or "DECODE":
                 S_Decoder();
-                break;
-                case "ENCODE":
-                S_Encoder();
-                break;
-                case "DECODE":
-                S_Decoder();
-                break;             
+                break;       
             }
             
             }

@@ -4,9 +4,9 @@ namespace Tecelan
     {
             public static void Open()
             {
-                Console.WriteLine("Write the text on the file 'Input.txt' on the Tecelan Folder");    
+                Console.WriteLine("Write the text on the file 'Input.txt' on the IO Folder");    
                 string Text = string.Empty;
-                string[] lines = System.IO.File.ReadAllLines(@"./Input.txt");
+                string[] lines = System.IO.File.ReadAllLines(@"./IO/Inputs/Input.txt");
 
                 foreach (var item in lines) { Text += item; }
 
